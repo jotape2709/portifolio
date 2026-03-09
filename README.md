@@ -1,9 +1,5 @@
 <div align="center">
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> main
 # `JPML // INTERACTIVE COMMAND CENTER`
 ### João Pedro De Moura Lima · Security Engineer
 
