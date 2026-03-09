@@ -11,12 +11,12 @@
         "Carregando núcleo do sistema...",
         "Verificando integridade dos módulos...",
         "Estabelecendo canal seguro...",
-        "C2 pronto. Conexão estabelecida."
+        "JPML online. Conexão estabelecida."
       ],
 
       welcome: [
         "[ok]  Sessão iniciada · canal seguro ativo",
-        "[sys] Visitante identificado. Bem-vindo ao C2 terminal de JPML.",
+        "[sys] Visitante identificado. Bem-vindo ao terminal JPML.",
         "[sys] Digite 'help' para ver os comandos disponíveis."
       ],
 
@@ -88,7 +88,7 @@
           lines: [
             "Foco em qualidade, não volume.",
             "",
-            "» C2 Terminal Portfolio (este ambiente)",
+            "» JPML Portfolio (este ambiente)",
             "  Stack: HTML · CSS · JavaScript",
             "  Arquitetura minimalista, auditável, secure-by-default."
           ],
@@ -117,12 +117,12 @@
         "Loading system kernel...",
         "Validating module integrity...",
         "Establishing secure channel...",
-        "C2 online. Connection established."
+        "JPML online. Connection established."
       ],
 
       welcome: [
         "[ok]  Session started · secure channel active",
-        "[sys] Visitor identified. Welcome to JPML's C2 terminal.",
+        "[sys] Visitor identified. Welcome to JPML's terminal.",
         "[sys] Type 'help' to list available commands."
       ],
 
@@ -194,7 +194,7 @@
           lines: [
             "Quality first, not volume first.",
             "",
-            "» C2 Terminal Portfolio (this environment)",
+            "» JPML Portfolio (this environment)",
             "  Stack: HTML · CSS · JavaScript",
             "  Minimalist, auditable, secure-by-default architecture."
           ],
@@ -219,16 +219,20 @@
 
   /* ── DOM refs ── */
   const $ = (id) => document.getElementById(id);
-  const stream     = $("stream");
-  const promptForm = $("promptForm");
-  const cmdInput   = $("cmdInput");
-  const cardTitle  = $("cardTitle");
-  const cardBody   = $("cardBody");
-  const langToggle = $("langToggle");
+  const stream      = $("stream");
+  const promptForm  = $("promptForm");
+  const cmdInput    = $("cmdInput");
+  const cardTitle   = $("cardTitle");
+  const cardBody    = $("cardBody");
+  const moduleCard  = $("moduleCard");
+  const langToggle  = $("langToggle");
   const themeToggle = $("themeToggle");
-  const bootScreen = $("bootScreen");
-  const bootLine   = $("bootLine");
+  const bootScreen  = $("bootScreen");
+  const bootLine    = $("bootLine");
   const bootProgress = $("bootProgress");
+
+  /* Module ordering for card cycling */
+  const MODULE_KEYS = ["profile", "skills", "experience", "projects", "contact"];
 
   /* Guard: abort if critical elements are missing (e.g. wrong HTML) */
   if (!stream || !promptForm || !cmdInput || !cardTitle || !cardBody || !langToggle || !themeToggle) {
@@ -246,6 +250,13 @@
 
   const clearStream = () => {
     stream.textContent = "";
+  };
+
+  /* Trigger a brief flash animation on an element */
+  const flashEl = (el) => {
+    el.classList.remove("btn-flash");
+    void el.offsetWidth; /* reflow to restart animation */
+    el.classList.add("btn-flash");
   };
 
   const hasModule = (key) =>
@@ -275,6 +286,14 @@
       });
       cardBody.appendChild(ul);
     }
+
+    /* Mark the matching cmd-btn as active */
+    document.querySelectorAll(".cmd-btn").forEach((btn) => {
+      btn.classList.toggle("cmd-btn--active", btn.dataset.cmd === `open ${moduleKey}`);
+    });
+
+    /* Flash the card to signal content changed */
+    flashEl(moduleCard);
   };
 
   /* ── Command processor ── */
@@ -340,7 +359,7 @@
     }
 
     if (cmd === "uname" || cmd === "uname -a") {
-      line("JPML_SECURE_OS v2.6 C2-BUILD #security-engineer", "sys");
+      line("JPML_SECURE_OS v2.6 #security-engineer", "sys");
       return;
     }
 
@@ -405,8 +424,27 @@
   });
 
   document.querySelectorAll(".cmd-btn").forEach((btn) => {
-    btn.addEventListener("click", () => runCommand(btn.dataset.cmd || "help"));
+    btn.addEventListener("click", () => {
+      flashEl(btn);
+      runCommand(btn.dataset.cmd || "help");
+    });
   });
+
+  /* Module card click: cycle to next module */
+  if (moduleCard) {
+    const cycleModule = () => {
+      const idx = MODULE_KEYS.indexOf(state.activeModule);
+      const nextKey = MODULE_KEYS[(idx + 1) % MODULE_KEYS.length];
+      renderCard(nextKey);
+      line(`[ok]  module '${nextKey}' loaded.`, "ok");
+    };
+    moduleCard.addEventListener("click", cycleModule);
+    moduleCard.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      e.preventDefault();
+      cycleModule();
+    });
+  }
 
   langToggle.addEventListener("click", () => {
     state.lang = state.lang === "pt-BR" ? "en" : "pt-BR";

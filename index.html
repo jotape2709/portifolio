@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="João Pedro De Moura Lima — Security Engineer | Terminal C2 Interactive Portfolio."
+      content="João Pedro De Moura Lima — Security Engineer | Interactive Terminal Portfolio."
     />
-    <title>JPML // C2 Terminal</title>
+    <title>JPML // Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,7 +30,7 @@
 ██║     ██╔═══╝        ██║   ██╔══╝  ██╔══██╗██║╚████║
 ╚██████╗███████╗       ██║   ███████╗██║  ██║██║ ╚███║
  ╚═════╝╚══════╝       ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚══╝</pre>
-        <p class="boot-os mono">JPML_SECURE_OS v2.6 · C2 BUILD</p>
+        <p class="boot-os mono">JPML_SECURE_OS v2.6</p>
         <p class="boot-msg mono" id="bootLine">Initializing...</p>
         <div class="boot-bar"><span id="bootProgress"></span></div>
       </div>
@@ -40,7 +40,7 @@
     <header class="nav">
       <div class="nav-left">
         <span class="led" aria-hidden="true"></span>
-        <span class="mono nav-label">jpml://c2.security-node.online</span>
+        <span class="mono nav-label">jpml://security-node.online</span>
       </div>
       <div class="nav-right">
         <button id="langToggle" class="ctrl-btn mono" aria-label="Switch language">PT-BR</button>
@@ -57,7 +57,7 @@
           <span class="dot dot-r"></span>
           <span class="dot dot-y"></span>
           <span class="dot dot-g"></span>
-          <span class="mono term-session">c2://joao.de.moura@security-engineer ~</span>
+          <span class="mono term-session">jpml://joao.de.moura@security-engineer ~</span>
         </div>
 
         <div class="term-body">
@@ -96,9 +96,10 @@
           <button class="cmd-btn" data-cmd="help">⟩ help</button>
         </nav>
 
-        <div class="module-card" id="moduleCard" aria-live="polite">
+        <div class="module-card" id="moduleCard" aria-live="polite" role="button" tabindex="0" aria-label="Click to open next module">
           <h2 class="mono card-title" id="cardTitle">_</h2>
           <div class="card-body" id="cardBody"></div>
+          <p class="card-hint mono" aria-hidden="true">↻ next</p>
         </div>
       </aside>
     </main>
