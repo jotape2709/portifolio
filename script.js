@@ -325,7 +325,7 @@
 
     /* Easter eggs */
     if (cmd === "sudo" || cmd.startsWith("sudo ")) {
-      line("[warn] Nice try. This terminal doesn't have sudo access.", "warn");
+      line("[warn] Nice try. This terminal does not have sudo access.", "warn");
       return;
     }
 
@@ -389,7 +389,8 @@
     const stages = T[state.lang].bootStages;
     for (let i = 0; i < stages.length; i += 1) {
       bootLine.textContent = stages[i];
-      bootProgress.style.width = `${Math.round(((i + 1) / stages.length) * 100)}%`;
+      const percent = Math.round(((i + 1) / stages.length) * 100);
+      bootProgress.style.width = `${percent}%`;
       await new Promise((resolve) => setTimeout(resolve, 420));
     }
     await new Promise((resolve) => setTimeout(resolve, 260));
