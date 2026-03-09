@@ -5,238 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> main
-      content="João Pedro De Moura Lima — Security Engineer Portfolio | Interactive command-center terminal experience."
+      content="João Pedro De Moura Lima — Security Engineer | Interactive Terminal Portfolio."
     />
-    <title>JPML // Interactive Command Center</title>
+    <title>JPML // Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
-<<<<<<< HEAD
-=======
-=======
-      content="João Pedro De Moura Lima — Security Engineer Portfolio | Terminal-inspired professional command center."
-    />
-    <title>JPML // Command Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
->>>>>>> main
->>>>>>> main
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> main
-    <div class="crt" aria-hidden="true"></div>
     <div class="scanlines" aria-hidden="true"></div>
+    <div class="crt-vignette" aria-hidden="true"></div>
 
-    <div class="boot" id="bootScreen" aria-live="polite">
+    <!-- Boot Screen -->
+    <div class="boot" id="bootScreen" role="status" aria-live="polite">
       <div class="boot-window">
-        <p class="boot-line">JPML_SECURE_OS v2.6</p>
-        <p class="boot-line" id="bootLine">Initializing...</p>
+        <pre class="boot-ascii" aria-hidden="true">
+ ██████╗██████╗     ████████╗███████╗██████╗ ███╗  ██╗
+██╔════╝╚════██╗    ╚══██╔══╝██╔════╝██╔══██╗████╗ ██║
+██║      █████╔╝       ██║   █████╗  ██████╔╝██╔██╗██║
+██║     ██╔═══╝        ██║   ██╔══╝  ██╔══██╗██║╚████║
+╚██████╗███████╗       ██║   ███████╗██║  ██║██║ ╚███║
+ ╚═════╝╚══════╝       ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚══╝</pre>
+        <p class="boot-os mono">JPML_SECURE_OS v2.6</p>
+        <p class="boot-msg mono" id="bootLine">Initializing...</p>
         <div class="boot-bar"><span id="bootProgress"></span></div>
       </div>
     </div>
 
+    <!-- Navigation -->
     <header class="nav">
       <div class="nav-left">
-        <span class="led"></span>
-        <span class="mono" id="sysLabel">jpml://security-node.online</span>
+        <span class="led" aria-hidden="true"></span>
+        <span class="mono nav-label">jpml://security-node.online</span>
       </div>
       <div class="nav-right">
-        <button id="langToggle" class="control" aria-label="Switch language">PT-BR</button>
-        <button id="themeToggle" class="control" aria-label="Switch theme">☾</button>
+        <button id="langToggle" class="ctrl-btn mono" aria-label="Switch language">PT-BR</button>
+        <button id="themeToggle" class="ctrl-btn" aria-label="Switch theme">☾</button>
       </div>
     </header>
 
+    <!-- Main two-column layout -->
     <main class="layout" id="app">
+
+      <!-- Left: Terminal -->
       <section class="terminal" aria-label="Interactive terminal interface">
-        <div class="terminal-top">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <p class="mono">session: joao.de.moura@security-engineer</p>
+        <div class="term-top" aria-hidden="true">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="mono term-session">jpml://joao.de.moura@security-engineer ~</span>
         </div>
 
-        <div class="terminal-body">
-          <div class="stream" id="stream"></div>
+        <div class="term-body">
+          <div class="stream" id="stream" role="log" aria-live="polite" aria-relevant="additions"></div>
 
           <form id="promptForm" class="prompt" autocomplete="off">
-            <label for="cmdInput" class="mono">visitor@jpml:~$</label>
-            <input id="cmdInput" name="command" spellcheck="false" placeholder="help" />
+            <label for="cmdInput" class="mono prompt-label">visitor@jpml:~$</label>
+            <input
+              id="cmdInput"
+              name="command"
+              spellcheck="false"
+              placeholder="help"
+              aria-label="Enter command"
+            />
           </form>
         </div>
       </section>
 
-      <aside class="modules" aria-label="Command modules">
-        <h1>João Pedro De Moura Lima</h1>
-        <p class="role" data-i18n="heroRole">Security Engineer</p>
-        <p class="muted" data-i18n="heroDesc">
-          Experiência prática em infraestrutura e operação com direção clara para engenharia de segurança.
-        </p>
-
-        <div class="command-grid">
-          <button class="module-btn" data-cmd="open profile">open profile</button>
-          <button class="module-btn" data-cmd="open skills">open skills</button>
-          <button class="module-btn" data-cmd="open experience">open experience</button>
-          <button class="module-btn" data-cmd="open projects">open projects</button>
-          <button class="module-btn" data-cmd="open contact">open contact</button>
-          <button class="module-btn" data-cmd="help">help</button>
+      <!-- Right: Profile + Module Card -->
+      <aside class="sidebar" aria-label="Profile and module viewer">
+        <div class="profile">
+          <h1 class="profile-name">João Pedro<br />De Moura Lima</h1>
+          <p class="profile-role mono" data-i18n="heroRole">Security Engineer</p>
+          <p class="profile-desc muted" data-i18n="heroDesc">
+            Experiência prática em infraestrutura e operação com direção clara para
+            engenharia de segurança.
+          </p>
         </div>
 
-        <div class="card" id="moduleCard" aria-live="polite">
-          <h2 class="mono" id="cardTitle">profile.sys</h2>
-          <div id="cardBody"></div>
+        <nav class="cmd-grid" aria-label="Quick commands">
+          <button class="cmd-btn" data-cmd="open profile">⟩ open profile</button>
+          <button class="cmd-btn" data-cmd="open skills">⟩ open skills</button>
+          <button class="cmd-btn" data-cmd="open experience">⟩ open experience</button>
+          <button class="cmd-btn" data-cmd="open projects">⟩ open projects</button>
+          <button class="cmd-btn" data-cmd="open contact">⟩ open contact</button>
+          <button class="cmd-btn" data-cmd="help">⟩ help</button>
+        </nav>
+
+        <div class="module-card" id="moduleCard" aria-live="polite" role="button" tabindex="0" aria-label="Click to open next module">
+          <h2 class="mono card-title" id="cardTitle">_</h2>
+          <div class="card-body" id="cardBody"></div>
+          <p class="card-hint mono" aria-hidden="true">↻ next</p>
         </div>
       </aside>
     </main>
 
     <footer class="footer mono" data-i18n="footer">
       signature://practical-foundation + operational-discipline + security-ambition
-<<<<<<< HEAD
-=======
-=======
-    <div class="noise" aria-hidden="true"></div>
-    <div class="grid" aria-hidden="true"></div>
-
-    <header class="topbar">
-      <div class="brand">
-        <span class="brand-dot"></span>
-        <span id="brandLabel">jpml://system.online</span>
-      </div>
-      <div class="controls">
-        <button id="langToggle" class="chip" aria-label="Switch language">PT-BR</button>
-        <button id="themeToggle" class="chip" aria-label="Switch theme">☾</button>
-      </div>
-    </header>
-
-    <main class="shell" id="app" aria-live="polite">
-      <section class="panel hero" id="home">
-        <p class="status" id="bootMessage">system init complete · secure channel established</p>
-        <h1>João Pedro De Moura Lima</h1>
-        <p class="title" data-i18n="heroTitle">Security Engineer</p>
-        <p class="summary" data-i18n="heroSummary">
-          Terminal-driven professional portfolio with a practical infrastructure background,
-          operational maturity and a security-oriented mindset.
-        </p>
-        <div class="quick-cmd" role="navigation" aria-label="Section commands">
-          <button class="cmd-btn" data-target="about">open --profile</button>
-          <button class="cmd-btn" data-target="skills">list --capabilities</button>
-          <button class="cmd-btn" data-target="experience">cat --trajectory.log</button>
-          <button class="cmd-btn" data-target="projects">run --projects</button>
-          <button class="cmd-btn" data-target="contact">connect --secure</button>
-        </div>
-      </section>
-
-      <section class="panel" id="about">
-        <h2 data-i18n="aboutHeading">Profile Module</h2>
-        <p data-i18n="aboutBody">
-          Based in São Paulo, Brasil, João combines field-level technical experience with modern
-          systems curiosity. His path includes infrastructure routines, structured cabling, fiber
-          optics operations, installation and maintenance, technical support, Linux familiarity,
-          and a clear direction toward security engineering and robust digital environments.
-        </p>
-      </section>
-
-      <section class="panel" id="skills">
-        <h2 data-i18n="skillsHeading">Capabilities Matrix</h2>
-        <ul class="tag-list">
-          <li>Infrastructure Operations</li>
-          <li>Structured Cabling</li>
-          <li>Fiber Optics</li>
-          <li>Technical Support</li>
-          <li>Installation & Maintenance</li>
-          <li>Linux Fundamentals</li>
-          <li>Security-Oriented Thinking</li>
-          <li>System Reliability Mindset</li>
-          <li>Continuous Learning</li>
-        </ul>
-      </section>
-
-      <section class="panel" id="experience">
-        <h2 data-i18n="expHeading">Trajectory Log</h2>
-        <div class="timeline">
-          <article>
-            <h3 data-i18n="exp1Title">Field & Infrastructure Foundation</h3>
-            <p data-i18n="exp1Body">
-              Practical work connected to infrastructure execution, physical network environment,
-              and dependable technical operation.
-            </p>
-          </article>
-          <article>
-            <h3 data-i18n="exp2Title">Support & Operational Maturity</h3>
-            <p data-i18n="exp2Body">
-              User-facing technical support, troubleshooting discipline, and service continuity
-              focus under real routine constraints.
-            </p>
-          </article>
-          <article>
-            <h3 data-i18n="exp3Title">Security Engineering Direction</h3>
-            <p data-i18n="exp3Body">
-              Ongoing growth in secure-by-default thinking, systems hardening mindset, and modern
-              technology evolution with disciplined foundations.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="panel" id="projects">
-        <h2 data-i18n="projHeading">Project Console</h2>
-        <p data-i18n="projBody">
-          This module intentionally prioritizes quality over volume. Current focus is strengthening
-          fundamentals, shipping reliable solutions, and building security-conscious systems.
-        </p>
-        <div class="project-card">
-          <h3 data-i18n="projCardTitle">Command Portfolio System</h3>
-          <p data-i18n="projCardBody">
-            A bilingual, theme-aware, terminal-inspired interface designed as a professional command
-            center for identity, trajectory, and technical positioning.
-          </p>
-          <span class="badge">HTML · CSS · JavaScript</span>
-        </div>
-      </section>
-
-      <section class="panel" id="contact">
-        <h2 data-i18n="contactHeading">Secure Contact Channel</h2>
-        <ul class="contact-list">
-          <li><span data-i18n="locationLabel">Location</span>: São Paulo, Brasil</li>
-          <li>
-            Email:
-            <a href="mailto:joaopedro7253@gmail.com" rel="noopener noreferrer"
-              >joaopedro7253@gmail.com</a
-            >
-          </li>
-          <li>
-            GitHub:
-            <a href="https://github.com/jotape2709" target="_blank" rel="noopener noreferrer"
-              >github.com/jotape2709</a
-            >
-          </li>
-          <li>
-            LinkedIn:
-            <a
-              href="https://www.linkedin.com/in/joao2709/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >linkedin.com/in/joao2709</a
-            >
-          </li>
-        </ul>
-      </section>
-    </main>
-
-    <footer class="foot">
-      <p data-i18n="footer">System signature: practical roots · security ambition · modern direction.</p>
->>>>>>> main
->>>>>>> main
     </footer>
 
     <script src="script.js"></script>
