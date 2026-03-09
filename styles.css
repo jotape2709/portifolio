@@ -1,5 +1,8 @@
 :root {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
   --bg: #04070d;
   --bg-soft: #0a1020;
   --panel: rgba(10, 16, 31, 0.74);
@@ -23,6 +26,8 @@ html[data-theme="light"] {
   --accent-2: #3558b6;
   --warn: #995f00;
   --danger: #a12f39;
+<<<<<<< HEAD
+=======
 =======
   --bg: #06090f;
   --panel: rgba(18, 23, 37, 0.7);
@@ -44,6 +49,7 @@ html[data-theme="light"] {
   --accent-soft: rgba(8, 124, 107, 0.12);
   --shadow: rgba(94, 105, 126, 0.2);
 >>>>>>> main
+>>>>>>> main
 }
 
 * { box-sizing: border-box; }
@@ -52,6 +58,9 @@ body {
   margin: 0;
   min-height: 100dvh;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
   color: var(--text);
   font-family: Inter, system-ui, sans-serif;
   background:
@@ -64,6 +73,8 @@ body {
 
 .crt,
 .scanlines {
+<<<<<<< HEAD
+=======
 =======
   background: radial-gradient(circle at 15% 15%, rgba(83, 107, 158, 0.3), transparent 35%),
     radial-gradient(circle at 75% 80%, rgba(9, 150, 133, 0.2), transparent 40%), var(--bg);
@@ -76,12 +87,16 @@ body {
 .noise,
 .grid {
 >>>>>>> main
+>>>>>>> main
   position: fixed;
   inset: 0;
   pointer-events: none;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
 .crt {
   background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   opacity: 0.8;
@@ -144,6 +159,8 @@ body {
 }
 
 .nav {
+<<<<<<< HEAD
+=======
 =======
 .noise {
   opacity: 0.03;
@@ -160,6 +177,7 @@ body {
 
 .topbar {
 >>>>>>> main
+>>>>>>> main
   position: sticky;
   top: 0;
   z-index: 20;
@@ -167,6 +185,9 @@ body {
   justify-content: space-between;
   align-items: center;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
   padding: 0.9rem 1rem;
   backdrop-filter: blur(12px);
   background: color-mix(in srgb, var(--bg), transparent 35%);
@@ -311,6 +332,8 @@ body {
   .layout { grid-template-columns: 1fr; }
   .terminal { min-height: 60dvh; }
   .terminal-body { height: calc(60dvh - 45px); }
+<<<<<<< HEAD
+=======
 =======
   padding: 1rem clamp(1rem, 3vw, 2rem);
   backdrop-filter: blur(10px);
@@ -492,5 +515,6 @@ a:hover { text-decoration: underline; }
   .topbar { padding: 0.8rem 0.9rem; }
   .brand { font-size: 0.82rem; }
   .chip { padding: 0.4rem 0.6rem; }
+>>>>>>> main
 >>>>>>> main
 }

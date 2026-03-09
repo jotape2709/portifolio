@@ -1,5 +1,8 @@
 (() => {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
   const t = {
     "pt-BR": {
       heroRole: "Engenheiro de Segurança",
@@ -163,6 +166,170 @@
 
   const state = { lang: "pt-BR", theme: "dark", activeModule: "profile" };
 
+<<<<<<< HEAD
+  const hasOwn = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
+
+  const init = () => {
+    const stream = document.getElementById("stream");
+    const promptForm = document.getElementById("promptForm");
+    const cmdInput = document.getElementById("cmdInput");
+    const cardTitle = document.getElementById("cardTitle");
+    const cardBody = document.getElementById("cardBody");
+    const langToggle = document.getElementById("langToggle");
+    const themeToggle = document.getElementById("themeToggle");
+    const boot = document.getElementById("bootScreen");
+    const bootLine = document.getElementById("bootLine");
+    const bootProgress = document.getElementById("bootProgress");
+
+    if (!stream || !promptForm || !cmdInput || !cardTitle || !cardBody || !langToggle || !themeToggle) {
+      return;
+    }
+
+    const clearNode = (node) => {
+      node.textContent = "";
+    };
+
+    const line = (text, cls = "") => {
+      const p = document.createElement("p");
+      p.textContent = text;
+      if (cls) p.className = cls;
+      stream.appendChild(p);
+      stream.scrollTop = stream.scrollHeight;
+    };
+
+    const renderCard = (moduleKey) => {
+      const module = t[state.lang].modules[moduleKey];
+      if (!module) return;
+
+      state.activeModule = moduleKey;
+      cardTitle.textContent = module.title;
+      clearNode(cardBody);
+
+      module.lines.forEach((txt) => {
+        const p = document.createElement("p");
+        p.textContent = txt;
+        cardBody.appendChild(p);
+      });
+
+      if (module.bullets.length) {
+        const ul = document.createElement("ul");
+        module.bullets.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+        cardBody.appendChild(ul);
+      }
+
+      line(`[sys] module '${moduleKey}' loaded.`, "sys");
+    };
+
+    const runCommand = (raw) => {
+      const cmd = raw.trim().toLowerCase();
+      if (!cmd) return;
+
+      line(`visitor@jpml:~$ ${cmd}`, "cmd");
+
+      if (cmd === "help") {
+        t[state.lang].help.forEach((msg, i) => line(msg, i === 0 ? "ok" : "sys"));
+        return;
+      }
+
+      if (cmd === "clear") {
+        clearNode(stream);
+        t[state.lang].welcome.forEach((msg, i) => line(msg, i === 0 ? "ok" : "sys"));
+        return;
+      }
+
+      if (cmd.startsWith("open ")) {
+        const moduleKey = cmd.replace("open ", "").trim();
+        if (hasOwn(t[state.lang].modules, moduleKey)) {
+          renderCard(moduleKey);
+        } else {
+          line(t[state.lang].unknown, "warn");
+        }
+        return;
+      }
+
+      line(t[state.lang].unknown, "warn");
+    };
+
+    const applyLanguage = () => {
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.dataset.i18n;
+        if (hasOwn(t[state.lang], key)) {
+          el.textContent = t[state.lang][key];
+        }
+      });
+      document.documentElement.lang = state.lang === "pt-BR" ? "pt-BR" : "en";
+      langToggle.textContent = state.lang === "pt-BR" ? "EN" : "PT-BR";
+
+      clearNode(stream);
+      t[state.lang].welcome.forEach((msg, i) => line(msg, i === 0 ? "ok" : "sys"));
+      renderCard(state.activeModule);
+    };
+
+    const applyTheme = () => {
+      document.documentElement.setAttribute("data-theme", state.theme);
+      themeToggle.textContent = state.theme === "dark" ? "☾" : "☼";
+    };
+
+    const hideBoot = () => {
+      if (!boot) return;
+      boot.classList.add("hidden");
+      setTimeout(() => {
+        if (boot && boot.parentNode) boot.remove();
+      }, 500);
+    };
+
+    const bootSequence = async () => {
+      if (!boot || !bootLine || !bootProgress) return;
+
+      for (let i = 0; i < t[state.lang].bootStages.length; i += 1) {
+        bootLine.textContent = t[state.lang].bootStages[i];
+        bootProgress.style.width = `${(i + 1) * 25}%`;
+        await new Promise((resolve) => setTimeout(resolve, 380));
+      }
+
+      hideBoot();
+    };
+
+    promptForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      runCommand(cmdInput.value);
+      cmdInput.value = "";
+    });
+
+    document.querySelectorAll(".module-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        runCommand(btn.dataset.cmd || "help");
+      });
+    });
+
+    langToggle.addEventListener("click", () => {
+      state.lang = state.lang === "pt-BR" ? "en" : "pt-BR";
+      applyLanguage();
+    });
+
+    themeToggle.addEventListener("click", () => {
+      state.theme = state.theme === "dark" ? "light" : "dark";
+      applyTheme();
+      line(`[sys] theme switched to ${state.theme}.`, "sys");
+    });
+
+    applyTheme();
+    applyLanguage();
+
+    setTimeout(hideBoot, 4500);
+    bootSequence();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
+=======
   const stream = document.getElementById("stream");
   const promptForm = document.getElementById("promptForm");
   const cmdInput = document.getElementById("cmdInput");
@@ -407,5 +574,6 @@
 
   applyLanguage();
   applyTheme();
+>>>>>>> main
 >>>>>>> main
 })();

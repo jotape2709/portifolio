@@ -1,6 +1,9 @@
 <div align="center">
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
 # `JPML // INTERACTIVE COMMAND CENTER`
 ### João Pedro De Moura Lima · Security Engineer
 
@@ -9,6 +12,8 @@
 ![Languages](https://img.shields.io/badge/Languages-PT--BR%20%7C%20EN-005fb8?style=for-the-badge)
 ![Theme](https://img.shields.io/badge/Themes-Dark%20%2F%20Light-6d28d9?style=for-the-badge)
 ![Posture](https://img.shields.io/badge/Posture-Secure--by--Default-9f1239?style=for-the-badge)
+<<<<<<< HEAD
+=======
 =======
 # `JPML // COMMAND PORTFOLIO SYSTEM`
 
@@ -20,12 +25,16 @@
 ![Theme](https://img.shields.io/badge/Themes-Dark%20%2F%20Light-6f42c1?style=for-the-badge)
 ![Security](https://img.shields.io/badge/Posture-Secure--by--Default-9e1c54?style=for-the-badge)
 >>>>>>> main
+>>>>>>> main
 
 </div>
 
 ---
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
 ## Concept
 
 This portfolio is designed as a **professional operating interface** rather than a generic personal website.
@@ -41,6 +50,8 @@ The visitor enters João’s digital command center: a live prompt, command-driv
 - **Location:** São Paulo, Brasil  
 - **Email:** joaopedro7253@gmail.com  
 - **GitHub:** https://github.com/jotape2709  
+<<<<<<< HEAD
+=======
 =======
 ## Overview
 
@@ -58,11 +69,15 @@ Instead of imitating a toy terminal, this project presents João’s professiona
 - **Contact:** joaopedro7253@gmail.com
 - **GitHub:** https://github.com/jotape2709
 >>>>>>> main
+>>>>>>> main
 - **LinkedIn:** https://www.linkedin.com/in/joao2709/
 
 ---
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
 ## Experience Design Highlights
 
 - Boot sequence and system initialization feeling.
@@ -83,6 +98,8 @@ Built from zero with intentional simplicity and auditability:
 - Safe external links (`noopener noreferrer`).
 - Minimal surface area and maintainable structure.
 - Content strategy based on credible, real positioning (no fabricated claims).
+<<<<<<< HEAD
+=======
 =======
 ## Product Experience
 
@@ -122,6 +139,7 @@ This portfolio reflects a realistic professional path:
 
 The project avoids fabricated claims and keeps positioning credible, mature, and forward-looking.
 >>>>>>> main
+>>>>>>> main
 
 ---
 
@@ -130,7 +148,11 @@ The project avoids fabricated claims and keeps positioning credible, mature, and
 <<<<<<< HEAD
 `identity = practical_field_foundation + operational_maturity + security_direction`
 =======
+<<<<<<< HEAD
+`identity = practical_field_foundation + operational_maturity + security_direction`
+=======
 **`system.signature = practical_roots + operational_maturity + security_ambition`**
+>>>>>>> main
 >>>>>>> main
 
 </div>
