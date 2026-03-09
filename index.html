@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
+<<<<<<< HEAD
+      content="João Pedro De Moura Lima — Security Engineer Portfolio | Interactive command-center terminal experience."
+    />
+    <title>JPML // Interactive Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+=======
       content="João Pedro De Moura Lima — Security Engineer Portfolio | Terminal-inspired professional command center."
     />
     <title>JPML // Command Portfolio</title>
@@ -12,11 +21,78 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+>>>>>>> main
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+<<<<<<< HEAD
+    <div class="crt" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <div class="boot" id="bootScreen" aria-live="polite">
+      <div class="boot-window">
+        <p class="boot-line">JPML_SECURE_OS v2.6</p>
+        <p class="boot-line" id="bootLine">Initializing...</p>
+        <div class="boot-bar"><span id="bootProgress"></span></div>
+      </div>
+    </div>
+
+    <header class="nav">
+      <div class="nav-left">
+        <span class="led"></span>
+        <span class="mono" id="sysLabel">jpml://security-node.online</span>
+      </div>
+      <div class="nav-right">
+        <button id="langToggle" class="control" aria-label="Switch language">PT-BR</button>
+        <button id="themeToggle" class="control" aria-label="Switch theme">☾</button>
+      </div>
+    </header>
+
+    <main class="layout" id="app">
+      <section class="terminal" aria-label="Interactive terminal interface">
+        <div class="terminal-top">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <p class="mono">session: joao.de.moura@security-engineer</p>
+        </div>
+
+        <div class="terminal-body">
+          <div class="stream" id="stream"></div>
+
+          <form id="promptForm" class="prompt" autocomplete="off">
+            <label for="cmdInput" class="mono">visitor@jpml:~$</label>
+            <input id="cmdInput" name="command" spellcheck="false" placeholder="help" />
+          </form>
+        </div>
+      </section>
+
+      <aside class="modules" aria-label="Command modules">
+        <h1>João Pedro De Moura Lima</h1>
+        <p class="role" data-i18n="heroRole">Security Engineer</p>
+        <p class="muted" data-i18n="heroDesc">
+          Experiência prática em infraestrutura e operação com direção clara para engenharia de segurança.
+        </p>
+
+        <div class="command-grid">
+          <button class="module-btn" data-cmd="open profile">open profile</button>
+          <button class="module-btn" data-cmd="open skills">open skills</button>
+          <button class="module-btn" data-cmd="open experience">open experience</button>
+          <button class="module-btn" data-cmd="open projects">open projects</button>
+          <button class="module-btn" data-cmd="open contact">open contact</button>
+          <button class="module-btn" data-cmd="help">help</button>
+        </div>
+
+        <div class="card" id="moduleCard" aria-live="polite">
+          <h2 class="mono" id="cardTitle">profile.sys</h2>
+          <div id="cardBody"></div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer mono" data-i18n="footer">
+      signature://practical-foundation + operational-discipline + security-ambition
+=======
     <div class="noise" aria-hidden="true"></div>
     <div class="grid" aria-hidden="true"></div>
 
@@ -148,6 +224,7 @@
 
     <footer class="foot">
       <p data-i18n="footer">System signature: practical roots · security ambition · modern direction.</p>
+>>>>>>> main
     </footer>
 
     <script src="script.js"></script>
