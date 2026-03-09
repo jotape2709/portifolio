@@ -1,4 +1,8 @@
 (() => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
   const t = {
     "pt-BR": {
       heroRole: "Engenheiro de Segurança",
@@ -162,6 +166,7 @@
 
   const state = { lang: "pt-BR", theme: "dark", activeModule: "profile" };
 
+<<<<<<< HEAD
   const hasOwn = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
 
   const init = () => {
@@ -324,4 +329,251 @@
   } else {
     init();
   }
+=======
+  const stream = document.getElementById("stream");
+  const promptForm = document.getElementById("promptForm");
+  const cmdInput = document.getElementById("cmdInput");
+  const cardTitle = document.getElementById("cardTitle");
+  const cardBody = document.getElementById("cardBody");
+  const langToggle = document.getElementById("langToggle");
+  const themeToggle = document.getElementById("themeToggle");
+  const boot = document.getElementById("bootScreen");
+  const bootLine = document.getElementById("bootLine");
+  const bootProgress = document.getElementById("bootProgress");
+
+  const line = (text, cls = "") => {
+    const p = document.createElement("p");
+    p.textContent = text;
+    if (cls) p.className = cls;
+    stream.appendChild(p);
+    stream.scrollTop = stream.scrollHeight;
+  };
+
+  const renderCard = (moduleKey) => {
+    const module = t[state.lang].modules[moduleKey];
+    if (!module) return;
+
+    state.activeModule = moduleKey;
+    cardTitle.textContent = module.title;
+
+    cardBody.replaceChildren();
+
+    module.lines.forEach((txt) => {
+      const p = document.createElement("p");
+      p.textContent = txt;
+      cardBody.appendChild(p);
+    });
+
+    if (module.bullets.length) {
+      const ul = document.createElement("ul");
+      module.bullets.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+      cardBody.appendChild(ul);
+    }
+
+    line(`[sys] module '${moduleKey}' loaded.`, "sys");
+  };
+
+  const runCommand = (raw) => {
+    const cmd = raw.trim().toLowerCase();
+    if (!cmd) return;
+
+    line(`visitor@jpml:~$ ${cmd}`, "cmd");
+
+    if (cmd === "help") {
+      t[state.lang].help.forEach((msg, i) => line(msg, i === 0 ? "ok" : "sys"));
+      return;
+    }
+
+    if (cmd === "clear") {
+      stream.replaceChildren();
+      t[state.lang].welcome.forEach((msg, i) => line(msg, i === 0 ? "ok" : "sys"));
+      return;
+    }
+
+    if (cmd.startsWith("open ")) {
+      const moduleKey = cmd.replace("open ", "").trim();
+      if (Object.hasOwn(t[state.lang].modules, moduleKey)) {
+        renderCard(moduleKey);
+      } else {
+        line(t[state.lang].unknown, "warn");
+      }
+      return;
+    }
+
+    line(t[state.lang].unknown, "warn");
+  };
+
+  const applyLanguage = () => {
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+      el.textContent = t[state.lang][key];
+    });
+    document.documentElement.lang = state.lang === "pt-BR" ? "pt-BR" : "en";
+    langToggle.textContent = state.lang === "pt-BR" ? "EN" : "PT-BR";
+
+    stream.replaceChildren();
+    t[state.lang].welcome.forEach((msg, i) => line(msg, i === 0 ? "ok" : "sys"));
+    renderCard(state.activeModule);
+=======
+  const dict = {
+    "pt-BR": {
+      boot: "inicialização concluída · canal seguro estabelecido",
+      heroTitle: "Engenheiro de Segurança",
+      heroSummary:
+        "Portfólio profissional guiado por terminal, com base prática em infraestrutura, maturidade operacional e mentalidade orientada à segurança.",
+      aboutHeading: "Módulo de Perfil",
+      aboutBody:
+        "Baseado em São Paulo, Brasil, João combina experiência técnica de campo com curiosidade por sistemas modernos. Sua trajetória inclui rotinas de infraestrutura, cabeamento estruturado, operações com fibra óptica, instalação e manutenção, suporte técnico, familiaridade com Linux e uma direção clara para engenharia de segurança e ambientes digitais robustos.",
+      skillsHeading: "Matriz de Capacidades",
+      expHeading: "Log de Trajetória",
+      exp1Title: "Base de Campo e Infraestrutura",
+      exp1Body:
+        "Atuação prática conectada à execução de infraestrutura, ambiente físico de rede e operação técnica confiável.",
+      exp2Title: "Suporte e Maturidade Operacional",
+      exp2Body:
+        "Suporte técnico voltado ao usuário, disciplina de troubleshooting e foco em continuidade de serviço sob rotinas reais.",
+      exp3Title: "Direção para Engenharia de Segurança",
+      exp3Body:
+        "Evolução contínua em pensamento secure-by-default, mentalidade de hardening e modernização tecnológica com fundamentos sólidos.",
+      projHeading: "Console de Projetos",
+      projBody:
+        "Este módulo prioriza qualidade acima de volume. O foco atual é fortalecer fundamentos, entregar soluções confiáveis e construir sistemas com consciência de segurança.",
+      projCardTitle: "Sistema de Portfólio em Comando",
+      projCardBody:
+        "Uma interface bilíngue, com suporte a temas e linguagem de terminal, desenhada como um centro profissional de identidade, trajetória e posicionamento técnico.",
+      contactHeading: "Canal Seguro de Contato",
+      locationLabel: "Localização",
+      footer: "Assinatura do sistema: base prática · ambição em segurança · direção moderna."
+    },
+    en: {
+      boot: "system init complete · secure channel established",
+      heroTitle: "Security Engineer",
+      heroSummary:
+        "Terminal-driven professional portfolio with a practical infrastructure background, operational maturity and a security-oriented mindset.",
+      aboutHeading: "Profile Module",
+      aboutBody:
+        "Based in São Paulo, Brasil, João combines field-level technical experience with modern systems curiosity. His path includes infrastructure routines, structured cabling, fiber optics operations, installation and maintenance, technical support, Linux familiarity, and a clear direction toward security engineering and robust digital environments.",
+      skillsHeading: "Capabilities Matrix",
+      expHeading: "Trajectory Log",
+      exp1Title: "Field & Infrastructure Foundation",
+      exp1Body:
+        "Practical work connected to infrastructure execution, physical network environment, and dependable technical operation.",
+      exp2Title: "Support & Operational Maturity",
+      exp2Body:
+        "User-facing technical support, troubleshooting discipline, and service continuity focus under real routine constraints.",
+      exp3Title: "Security Engineering Direction",
+      exp3Body:
+        "Ongoing growth in secure-by-default thinking, systems hardening mindset, and modern technology evolution with disciplined foundations.",
+      projHeading: "Project Console",
+      projBody:
+        "This module intentionally prioritizes quality over volume. Current focus is strengthening fundamentals, shipping reliable solutions, and building security-conscious systems.",
+      projCardTitle: "Command Portfolio System",
+      projCardBody:
+        "A bilingual, theme-aware, terminal-inspired interface designed as a professional command center for identity, trajectory, and technical positioning.",
+      contactHeading: "Secure Contact Channel",
+      locationLabel: "Location",
+      footer: "System signature: practical roots · security ambition · modern direction."
+    }
+  };
+
+  const state = {
+    lang: "en",
+    theme: document.documentElement.getAttribute("data-theme") || "dark"
+  };
+
+  const langToggle = document.getElementById("langToggle");
+  const themeToggle = document.getElementById("themeToggle");
+  const bootMessage = document.getElementById("bootMessage");
+
+  const applyLanguage = () => {
+    const selected = dict[state.lang];
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+      if (Object.hasOwn(selected, key)) {
+        el.textContent = selected[key];
+      }
+    });
+    bootMessage.textContent = selected.boot;
+    langToggle.textContent = state.lang === "en" ? "PT-BR" : "EN";
+    document.documentElement.lang = state.lang === "en" ? "en" : "pt-BR";
+    flashPanel("home");
+>>>>>>> main
+  };
+
+  const applyTheme = () => {
+    document.documentElement.setAttribute("data-theme", state.theme);
+    themeToggle.textContent = state.theme === "dark" ? "☾" : "☼";
+  };
+
+<<<<<<< HEAD
+  const bootSequence = async () => {
+    for (let i = 0; i < t[state.lang].bootStages.length; i += 1) {
+      bootLine.textContent = t[state.lang].bootStages[i];
+      bootProgress.style.width = `${(i + 1) * 25}%`;
+      await new Promise((resolve) => setTimeout(resolve, 420));
+    }
+    boot.classList.add("hidden");
+    setTimeout(() => boot.remove(), 450);
+  };
+
+  promptForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    runCommand(cmdInput.value);
+    cmdInput.value = "";
+  });
+
+  document.querySelectorAll(".module-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      runCommand(btn.dataset.cmd || "help");
+    });
+  });
+
+  langToggle.addEventListener("click", () => {
+    state.lang = state.lang === "pt-BR" ? "en" : "pt-BR";
+=======
+  const flashPanel = (id) => {
+    const panel = document.getElementById(id);
+    if (!panel) return;
+    panel.classList.remove("flash");
+    requestAnimationFrame(() => panel.classList.add("flash"));
+  };
+
+  langToggle.addEventListener("click", () => {
+    state.lang = state.lang === "en" ? "pt-BR" : "en";
+>>>>>>> main
+    applyLanguage();
+  });
+
+  themeToggle.addEventListener("click", () => {
+    state.theme = state.theme === "dark" ? "light" : "dark";
+    applyTheme();
+<<<<<<< HEAD
+    line(`[sys] theme switched to ${state.theme}.`, "sys");
+  });
+
+  applyTheme();
+  applyLanguage();
+  bootSequence();
+=======
+    flashPanel("home");
+  });
+
+  document.querySelectorAll(".cmd-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.target;
+      const section = document.getElementById(id);
+      if (!section) return;
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      flashPanel(id);
+    });
+  });
+
+  applyLanguage();
+  applyTheme();
+>>>>>>> main
+>>>>>>> main
 })();
